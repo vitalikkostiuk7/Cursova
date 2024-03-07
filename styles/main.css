@@ -1,8 +1,17 @@
+:root{
+  --background-body-color: #dde1e7;
+  --background-content-color: #dde1e7d6;
+  --primary-text-color: #595959;
+  --background-field-color: #dde1e7bc;
+  --background-button-color: #ffffff9a;
+  --primary-accent-text-color: #3498db;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{
   margin: 0;
   padding: 0;
-  /* user-select: none; */
+  user-select: none;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
@@ -12,22 +21,63 @@ html,body{
 body{
   display: grid;
   place-items: center;
-  background: #dde1e7;
+  background: var(--background-body-color);
   text-align: center;
 }
+
+/* Background video */
+
+.video-container{
+  width: 100vw;
+  max-height: 100vh;
+  background: url(../media/background-video.mp4) center/cover no-repeat;
+  overflow: hidden;
+  position: relative;
+}
+.video-container::before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+.video{
+  /* position: relative; */
+  padding-bottom: 56.25%;
+}
+
+.video-media{
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* Login + Registration */
+
 .content{
+  z-index: 5;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   width: 330px;
   padding: 40px 30px;
-  background: #dde1e7;
+  background: var(--background-content-color);
   border-radius: 10px;
-  box-shadow: -3px -3px 7px #ffffff73,
-               2px 2px 5px rgba(94,104,121,0.288);
 }
 .content .text{
-  font-size: 33px;
+  font-size: 25px;
   font-weight: 600;
   margin-bottom: 35px;
-  color: #595959;
+  color: var(--primary-text-color);
 }
 .field{
   height: 50px;
@@ -35,9 +85,10 @@ body{
   display: flex;
   position: relative;
 }
-.field:nth-child(2){
-  margin-top: 20px;
+.field  {
+  margin-bottom: 20px;
 }
+
 .field input{
   height: 100%;
   width: 100%;
@@ -45,19 +96,17 @@ body{
   outline: none;
   border: none;
   font-size: 18px;
-  background: #dde1e7;
-  color: #595959;
+  background: var(--background-field-color);
+  color: var(--primary-text-color);
   border-radius: 25px;
-  box-shadow: inset 2px 2px 5px #BABECC,
-              inset -5px -5px 10px #ffffff73;
 }
 .field input:focus{
-  box-shadow: inset 1px 1px 2px #BABECC,
-              inset -1px -1px 2px #ffffff73;
+  box-shadow: inset 3px 3px 4px #BABECC,
+              inset -3px -3px 4px #ffffff85;
 }
 .field span{
   position: absolute;
-  color: #595959;
+  color: var(--primary-text-color);
   width: 50px;
   line-height: 50px;
 }
@@ -67,7 +116,7 @@ body{
   transform: translateY(-50%);
   left: 45px;
   pointer-events: none;
-  color: #666666;
+  color: var(--primary-text-color);
 }
 .field input:valid ~ label{
   opacity: 0;
@@ -79,29 +128,27 @@ button{
   font-size: 18px;
   line-height: 50px;
   font-weight: 600;
-  background: #dde1e7;
+  background: var(--background-button-color);
   border-radius: 25px;
   border: none;
   outline: none;
   cursor: pointer;
-  color: #595959;
-  box-shadow: 2px 2px 5px #BABECC,
-             -5px -5px 10px #ffffff73;
+  color: var(--primary-text-color);
 }
 button:focus{
-  color: #3498db;
-  box-shadow: inset 2px 2px 5px #BABECC,
+  color: var(--primary-accent-text-color);
+  box-shadow: inset 2px 2px 5px #a8acb7,
              inset -5px -5px 10px #ffffff73;
 }
-.sign-up{
+.sign-up, .sign-in{
   margin: 10px 0;
-  color: #595959;
+  color: var(--primary-text-color);
   font-size: 16px;
 }
-.sign-up a{
-  color: #3498db;
+.sign-up a, .sign-in a{
+  color: var(--primary-accent-text-color);
   text-decoration: none;
 }
-.sign-up a:hover{
+.sign-up a:hover, .sign-in a:hover{
   text-decoration: underline;
 }
